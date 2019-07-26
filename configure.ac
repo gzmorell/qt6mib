@@ -14,32 +14,23 @@ AC_PROG_RANLIB
 AC_CHECK_LIB([pthread], [main], [], AC_MSG_ERROR([*** POSIX thread support not installed - please install first ***]))
 AC_CHECK_HEADER(pthread.h,,AC_MSG_ERROR([*** POSIX thread support not installed - please install first ***]))
 
-# checking qt4 library
-# Gentoo 64bit
-if test -f /usr/lib64/qt4/libQtCore.so
-then
-	echo "Found qt4 library in /usr/lib64/qt4 directory"
-# Gentoo 32bit
-elif test -f /usr/lib/qt4/libQtCore.so
-then
-	echo "Found qt4 library in /usr/lib/qt4 directory"
-else
-	AC_CHECK_LIB([QtCore], [main], [], AC_MSG_ERROR([*** QtCore library not installed - please install QT4 first ***]))
-	AC_CHECK_LIB([QtGui], [main], [], AC_MSG_ERROR([*** QtCore library not installed - please install QT4 first ***]))
-fi
+# checking qt5 library
+AC_CHECK_LIB([Qt5Core], [main], [], AC_MSG_ERROR([*** Qt5Core library not installed - please install Qt5 first ***]))
+AC_CHECK_LIB([Qt5Gui], [main], [], AC_MSG_ERROR([*** Qt5Gui library not installed - please install Qt5 first ***]))
+AC_CHECK_LIB([Qt5Widgets], [main], [], AC_MSG_ERROR([*** Qt5Widgets library not installed - please install Qt5 first ***]))
 
 # testing qmake
 QMAKE=`which qmake`
 if test -z "$QMAKE"
 then
 	# fix for Fedora
-	if test -f /usr/lib64/qt4/bin/qmake; then
-		QMAKE=/usr/lib64/qt4/bin/qmake
+	if test -f /usr/lib64/qt5/bin/qmake; then
+		QMAKE=/usr/lib64/qt5/bin/qmake
 	fi
 	
 	if test -z "$QMAKE"
 	then
-		AC_MSG_ERROR([qmake is missing, please install QT4 development packages.])
+		AC_MSG_ERROR([qmake is missing, please install Qt5 development packages.])
 	fi
 fi
 echo "Found $QMAKE"

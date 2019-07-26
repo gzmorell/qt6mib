@@ -17,12 +17,7 @@
  * with this program; if not, write to the Free Software Foundation, Inc.,
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 */
-#include <QtGui>
-#if QT_VERSION >= 0x040700
 #include <QElapsedTimer>
-#else
-#include <QTime>
-#endif
 #include <stdio.h>
 #include <stdlib.h>
 #include <sys/time.h>

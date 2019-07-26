@@ -28,7 +28,7 @@ bool dbg = false;
 
 static void help() {
 	printf(
-"qtmib is an easy-to-use SNMP MIB Browser based on QT4 library. It is build\n"
+"qtmib is an easy-to-use SNMP MIB Browser based on Qt5 library. It is build\n"
 "as a front-end for net-snmp tools, and it allows the user to query any SNMP\n"
 "enabled device. It supports SNMPv1, SNMPv2c. qtmib is released under GPL v2\n"
 "license. See http://qtmib.sourceforge.net for more details.\n\n");

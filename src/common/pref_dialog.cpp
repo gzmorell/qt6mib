@@ -20,7 +20,7 @@
 
 #include <sys/stat.h>
 #include <errno.h>
-#include <QtGui>
+#include <QtWidgets>
 #include <QButtonGroup>
 #include "pref_dialog.h"
 extern int dbg;
