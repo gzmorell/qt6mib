@@ -3802,6 +3802,8 @@ then
 elif test -f /usr/lib/qt4/libQtCore.so
 then
 	echo "Found qt4 library in /usr/lib/qt4 directory"
+elif test -f /usr/lib/libQt5Core.so
+	echo "Found Qt5 library in /usr/lib directory"
 else
 	{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for main in -lQtCore" >&5
 $as_echo_n "checking for main in -lQtCore... " >&6; }
