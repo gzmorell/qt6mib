@@ -347,7 +347,7 @@ void MainWindow::transactionDone(const QString &msg) {
 void MainWindow::displayResult(const QString &msg) {
 	if (dbg)
 		printf("message %s\n", msg.toStdString().c_str());
-	QStringList lst = msg.split( "\t", QString::SkipEmptyParts);
+	QStringList lst = msg.split( "\t", Qt::SkipEmptyParts);
 	
 	QString op;
 	QString ip;
@@ -427,7 +427,7 @@ void MainWindow::displayResult(const QString &msg) {
 			return;
 		result_->setItem(found, 5, new QTableWidgetItem(sysUpTime));		
 		if (sysUpTime == " timeout ")
-			result_->item(found, 5)->setBackgroundColor(QColor(Qt::red));
+			result_->item(found, 5)->setBackground(QColor(Qt::red));
 	}
 	else if (op == "del") {
 		if (found == -1)

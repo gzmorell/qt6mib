@@ -31,7 +31,7 @@ QString SystemReport::get() {
 	QString out = "";
 	out += "<b>IP Address:</b> " + ip_ + "<br/>";
 	QString input = rv;
-	QStringList lines = input.split( "\n", QString::SkipEmptyParts );
+	QStringList lines = input.split( "\n", Qt::SkipEmptyParts );
 	foreach (QString line, lines) {
 		if (line.startsWith("iso.3.6.1.2.1.1.1.0")) {
 			out += "Description: " + extract_string(line) + "<br/>";
@@ -65,7 +65,7 @@ QString HrDeviceReport::get() {
 	QStringList devlist;
 
 	QString input = rv;
-	QStringList lines = input.split( "\n", QString::SkipEmptyParts );
+	QStringList lines = input.split( "\n", Qt::SkipEmptyParts );
 	foreach (QString line, lines) {
 		if (line.startsWith("iso.3.6.1.2.1.25.3.2.1.2.")) {
 			QString oid = extract_oid(line);
@@ -110,7 +110,7 @@ QString HrDeviceReport::get() {
 		out += "CPU load averages (1/5/15 minutes):<br/><table border=\"1\" cellpadding=\"10\"><tr>";
 		bool second_raw = false;
 		input = rv;
-		lines = input.split( "\n", QString::SkipEmptyParts );
+		lines = input.split( "\n", Qt::SkipEmptyParts );
 		bool found = false;
 		foreach (QString line, lines) {
 			if (line.startsWith("iso.3.6.1.4.1.2021.10.1.2.")) {
@@ -146,7 +146,7 @@ QString HrStorageReport::get() {
 	if (rv) {
 		// extract device id and descriptions
 		QString input = rv;
-		QStringList lines = input.split( "\n", QString::SkipEmptyParts );
+		QStringList lines = input.split( "\n", Qt::SkipEmptyParts );
 		foreach (QString line, lines) {
 			if (line.startsWith("iso.3.6.1.4.1.2021.4.3.0"))
 				out += "Total Swap: " + extract_integer(line) + "<br/>";
@@ -176,7 +176,7 @@ QString HrStorageReport::get() {
 		
 		// extract device id and descriptions
 		QString input = rv;
-		QStringList lines = input.split( "\n", QString::SkipEmptyParts );
+		QStringList lines = input.split( "\n", Qt::SkipEmptyParts );
 		foreach (QString line, lines) {
 			if (line.startsWith("iso.3.6.1.2.1.25.2.3.1.3.")) {
 				int index = line.indexOf(" = ");

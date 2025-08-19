@@ -195,7 +195,7 @@ void TransactionThread::checkDevice(DevStorage *dev, TransactionThread *th) {
 			if (dev->version_ == "v1")
 				 out = "add\t" + dev->ip_ + "\t \t";
 			QString input = rv;
-			QStringList lines = input.split( "\n", QString::SkipEmptyParts );
+			QStringList lines = input.split( "\n", Qt::SkipEmptyParts );
 			foreach (QString line, lines) {
 				if (line.startsWith("iso.3.6.1.2.1.1.4.0")) {
 					out += extract_string(line) + "\t";

@@ -22,8 +22,8 @@
 #include <QTreeView>
 
 QStringList qt_line_diff(QString str1, QString str2) {
-	QStringList list1 = str1.split( "\n", QString::SkipEmptyParts );
-	QStringList list2 = str2.split( "\n", QString::SkipEmptyParts );
+	QStringList list1 = str1.split( "\n", Qt::SkipEmptyParts );
+	QStringList list2 = str2.split( "\n", Qt::SkipEmptyParts );
 	int cnt1 = list1.count();
 	int cnt2 = list2.count();
 	

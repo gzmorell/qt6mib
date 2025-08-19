@@ -36,7 +36,7 @@ QString UdpConnectionReport::get() {
 	QStringList ip;
 	int cnt = 0;
 	QString input = rv1;
-	QStringList lines = input.split( "\n", QString::SkipEmptyParts );
+	QStringList lines = input.split( "\n", Qt::SkipEmptyParts );
 	foreach (QString line, lines) {
 		if (line.startsWith("iso.3.6.1.2.1.7.5.1.1.")) {
 			QString myip = extract_ipaddress(line);

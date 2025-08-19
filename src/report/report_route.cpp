@@ -43,7 +43,7 @@ QString RouteReport::get() {
 	QStringList name;
 	int cnt = 0;
 	QString input = rv1;
-	QStringList lines = input.split( "\n", QString::SkipEmptyParts );
+	QStringList lines = input.split( "\n", Qt::SkipEmptyParts );
 	foreach (QString line, lines) {
 		if (line.startsWith("iso.3.6.1.2.1.2.2.1.2.")) {
 			QString ifname = extract_string(line);
@@ -68,7 +68,7 @@ QString RouteReport::get() {
 	QStringList addr_index;
 	QStringList addr_addr;
 	input = rv2;
-	lines = input.split( "\n", QString::SkipEmptyParts );
+	lines = input.split( "\n", Qt::SkipEmptyParts );
 	foreach (QString line, lines) {
 		if (line.startsWith("iso.3.6.1.2.1.4.21.1.1.")) {
 			QString addr = extract_ipaddress(line);

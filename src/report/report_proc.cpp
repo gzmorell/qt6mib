@@ -37,7 +37,7 @@ QString HrProcessReport::get() {
 	// pid and name
 	message("Processing data ...");
 	QString input = rv;
-	QStringList lines = input.split( "\n", QString::SkipEmptyParts );
+	QStringList lines = input.split( "\n", Qt::SkipEmptyParts );
 	int cnt = 0;
 	QStringList pid;
 	QStringList name;

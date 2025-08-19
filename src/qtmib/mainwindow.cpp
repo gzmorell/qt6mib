@@ -24,6 +24,7 @@
 #include <QHBoxLayout>
 #include <QSplitter>
 #include <QMessageBox>
+#include <QRegularExpression>
 #include "mainwindow.h"
 #include "qtmib.h"
 #include "clicked_label.h"
@@ -215,18 +216,18 @@ QAbstractItemModel *MainWindow::modelFromFile(const QString& fileName) {
 		if (line.isEmpty() || trimmedLine.isEmpty())
 			continue;
 
-		QRegExp re("^\\s+");
-		int nonws = re.indexIn(line);
+		QRegularExpression re("^\\s+");
+		auto wss = re.match(line);
 		int level = 0;
-		if (nonws == -1) {
+		if (!wss.hasMatch()) {
 			level = 0;
 		}
 		else {
 			if (line.startsWith("\t")) {
-				level = re.cap(0).length();
+				level = wss.captured(0).length();
 			}
 			else {
-				level = re.cap(0).length()/4;
+				level = wss.captured(0).length()/4;
 			}
 		}
 
@@ -275,7 +276,7 @@ void MainWindow::loadUserMibs() {
 			printf("translate result: %s\n", usr.toStdString().c_str());
 	
 		// update tree
-		QStringList diff = usr.split( "\n", QString::SkipEmptyParts);
+		QStringList diff = usr.split( "\n", Qt::SkipEmptyParts);
 		foreach (QString line, diff) {
 			// skip lines not starting with iso(1)
 			if (!line.startsWith("iso(1)"))
@@ -283,7 +284,7 @@ void MainWindow::loadUserMibs() {
 			
 //printf("processing %s\n", line.toStdString().c_str());		
 			// split the line
-			QStringList oidlist = line.split( ".", QString::SkipEmptyParts );
+			QStringList oidlist = line.split( ".", Qt::SkipEmptyParts );
 			int cnt = oidlist.count();
 			int level = 1;
 			QStandardItem *parent = 0;
@@ -505,7 +506,7 @@ void MainWindow::updateActions() {
 		QModelIndex mindex = treeView_->selectionModel()->currentIndex();
 		const QAbstractItemModel *mod = mindex.model();
 		bool has_children = false;
-		if (mindex.child(0, 0).isValid())
+		if (mod->hasChildren(mindex))
 			has_children = true;
 
 		// build name, oid
@@ -614,7 +615,7 @@ void MainWindow::handleAction() {
 		// prepare next OID for getnext
 		if (act == "snmpgetnext" || act == "snmpbulkget") {
 			QString input = rv;
-			QStringList lines = input.split( "\n", QString::SkipEmptyParts );
+			QStringList lines = input.split( "\n", Qt::SkipEmptyParts );
 			foreach (QString line, lines) {
 				if (line.startsWith("iso.3.6.1.")) {
 					QString oid = line.mid(3);
@@ -661,7 +662,7 @@ void MainWindow::handleTranslate() {
 	QString input = result_->toPlainText();
 	QString output = "";
 	
-	QStringList lines = input.split( "\n", QString::SkipEmptyParts );
+	QStringList lines = input.split( "\n", Qt::SkipEmptyParts );
 	foreach (QString line, lines) {
 //printf("%s\n", line.toStdString().c_str());
 		if (line.startsWith("iso.3.6.1.")) {

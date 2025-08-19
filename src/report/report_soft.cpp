@@ -33,7 +33,7 @@ QString HrSoftwareReport::get() {
 
 	message("Extracting data ...");
 	QString input = rv;
-	QStringList lines = input.split( "\n", QString::SkipEmptyParts );
+	QStringList lines = input.split( "\n", Qt::SkipEmptyParts );
 	int cnt = 0;
 	foreach (QString line, lines) {
 		if (line.startsWith("iso.3.6.1.2.1.25.6.3.1.2.")) {
