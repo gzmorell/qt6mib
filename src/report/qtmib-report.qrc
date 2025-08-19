@@ -1,5 +1,5 @@
 <!DOCTYPE RCC><RCC version="1.0">
 <qresource prefix="/">
-   <file>resources/qtmib-128.png</file>
+   <file>resources/qt6mib-128.png</file>
 </qresource>
 </RCC>

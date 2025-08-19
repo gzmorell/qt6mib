@@ -449,7 +449,7 @@ void MainWindow::connection() {
 }
 
 void MainWindow::about() {
-	QString msg = "<table cellpadding=\"10\"><tr><td><img src=\":/resources/qtmib-128.png\"></td>";
+	QString msg = "<table cellpadding=\"10\"><tr><td><img src=\":/resources/qt6mib-128.png\"></td>";
 	msg += "<td>qtmib " + tr("version") + " " + PACKAGE_VERSION + "<br/><br/>";
 	msg += tr(
 		"qtmib is an easy-to-use SNMP MIB Browser based on QT4 library. It is build as "
