@@ -13,5 +13,5 @@ SOURCES   = main.cpp \
             utils.cpp \
             search_dialog.cpp
 RESOURCES = qtmib.qrc
-TARGET=../../build/qtmib
+TARGET=../../build/qt6mib
 

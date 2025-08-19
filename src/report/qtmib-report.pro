@@ -24,4 +24,4 @@ SOURCES       = mainwindow.cpp \
                 bundle.cpp \
                 ../common/pref_dialog.cpp
 RESOURCES = qtmib-report.qrc
-TARGET=../../build/qtmib-report
+TARGET=../../build/qt6mib-report

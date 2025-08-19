@@ -22,4 +22,4 @@ SOURCES       = mainwindow.cpp \
                 ../common/pref_dialog.cpp \
                 clicked_label.cpp
 RESOURCES = qtmib-discover.qrc
-TARGET=../../build/qtmib-discover
+TARGET=../../build/qt6mib-discover
